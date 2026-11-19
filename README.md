@@ -110,3 +110,7 @@ src/main/kotlin/com/lememo/aicommit/
   追求首字速度可以换成同平台的轻量/非推理模型。
 - 参考最近提交的措辞时，多仓库项目只取第一个仓库的历史。
 - 目标平台为 2026.2，`CommitWorkflowUi` 等接口属于平台 vcs 实现包，升级 IDE 后需要重新验证。
+
+## License
+
+[MIT](LICENSE) © 2026 endlessc
