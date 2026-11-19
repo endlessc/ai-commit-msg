@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>com.lememo.ai-commit-message</id>
+    <name>AI Commit Message</name>
+    <vendor>lememo</vendor>
+
+    <description><![CDATA[
+        Generates Git commit messages from the changes selected in the commit panel,
+        using any OpenAI-compatible chat completion endpoint.
+        <br/>
+        <br/>
+        根据提交面板中勾选的变更，调用大模型生成提交信息。支持 DeepSeek、通义千问、智谱 GLM、
+        Kimi、OpenAI 以及本地 Ollama 等 OpenAI 兼容服务。
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.vcs</depends>
+
+    <idea-version since-build="262"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="AI Commit Message" displayType="BALLOON"/>
+        <applicationConfigurable parentId="tools"
+                                 id="com.lememo.aicommit.settings"
+                                 instance="com.lememo.aicommit.ui.AiCommitConfigurable"
+                                 displayName="AI Commit Message"/>
+    </extensions>
+
+    <actions>
+        <action id="AiCommit.GenerateMessage"
+                class="com.lememo.aicommit.action.GenerateCommitMessageAction">
+            <!-- 提交信息框下方工具条：修正(M) ｜ 上次提交 ｜ 历史图标 ｜ 本插件按钮 -->
+            <add-to-group group-id="Vcs.MessageActionGroup" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
